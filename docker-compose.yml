@@ -1,0 +1,18 @@
+services:
+  web:
+    container_name: i1-be
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: i2.be
+    ports:
+      - "85:80"
+    volumes:
+      - ./:/var/www/html
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+volumes:
+  garbage:
+    external: true
+  
