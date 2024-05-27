@@ -1,0 +1,34 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from urllib.parse import urlparse
+
+from app.core.config import settings
+from app.v1 import router
+
+
+def get_application():
+   _app = FastAPI(
+      title=settings.PROJECT_NAME,
+      summary="Tools Backend API build with the latest FastAPI, Pydantic, SQLAlchemy and Alembic",
+      version="v0.1.0-alpha",
+      terms_of_service="https://github.com/setia1011/simbe",
+      contact={
+         "name": "Setia",
+         "url": "https://github.com/setia1011/simbe",
+         "email": "setiadi1457@gmail.com",
+      }
+   )
+
+   _app.add_middleware(
+      CORSMiddleware,
+      allow_origins=[urlparse(str(origin)).scheme + "://" + urlparse(str(origin)).netloc for origin in settings.BACKEND_CORS_ORIGINS],
+      allow_credentials=True,
+      allow_methods=["*"],
+      allow_headers=["*"],
+   )
+
+   return _app
+
+
+app = get_application()
+app.include_router(router=router)

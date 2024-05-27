@@ -1,0 +1,16 @@
+uvicorn==0.29.0
+fastapi==0.111.0
+SQLAlchemy==2.0.30
+pydantic==2.7.1
+pydantic-settings==2.2.1
+pydantic[email]
+python-dotenv==1.0.1
+mysqlclient==2.2.4
+aiomysql==0.2.0
+alembic==1.13.1
+requests==2.32.2
+aiohttp==3.9.5
+pypinyin
+pypinyin-dict
+gTTS
+pandas

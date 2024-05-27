@@ -1,0 +1,4 @@
+GET /v1/api/cedict/search-word?s=日 HTTP/1.1
+Host: localhost:85
+Content-Type: application/json
+Accept: */*

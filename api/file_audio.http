@@ -1,0 +1,4 @@
+GET /v1/api/file/audio?f=%E6%97%A5.mp3 HTTP/1.1
+Host: localhost:85
+Content-Type: application/json
+Accept: */*
