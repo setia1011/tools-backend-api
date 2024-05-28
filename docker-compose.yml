@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: i2.be
+    image: i1-be
     ports:
       - "85:80"
     volumes:
