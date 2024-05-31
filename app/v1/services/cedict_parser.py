@@ -98,3 +98,6 @@ def search_word(s: str, db: Session = Depends):
          "created_at": i.created_at
       })
    return d
+
+def goPinyin(s: str):
+   return pinyin(s)

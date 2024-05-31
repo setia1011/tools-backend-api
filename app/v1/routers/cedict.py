@@ -21,3 +21,10 @@ def search_word(s: str, db: Session = Depends(db_sync_session)):
       return cedict_parser.search_word(s=s, db=db)
    except:
       raise
+
+@router.get('/pinyin')
+def pinyin(s: str):
+   try:
+      return cedict_parser.goPinyin(s=s)
+   except:
+      raise
