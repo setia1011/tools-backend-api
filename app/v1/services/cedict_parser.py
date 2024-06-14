@@ -12,6 +12,7 @@ from app.v1.models import Cedict
 from pathlib import Path
 from app.core.config import settings
 import json
+import requests
 
 
 def cedict_parse(db: Session = Depends):
@@ -99,5 +100,20 @@ def search_word(s: str, db: Session = Depends):
       })
    return d
 
-def goPinyin(s: str):
+def pinyine(s: str):
    return pinyin(s)
+
+def translate(s: str, sl: str, tl: str):
+   url = "https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl="+sl+"&tl="+tl+"&q=" + s
+   headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36'}
+   try:
+      r = requests.get(url, headers=headers).json()
+      return {
+         'translation': r[0][0],
+         'translation_languange': r[0][1],
+         'text': s,
+         'sl': sl,
+         'tl': tl
+      }
+   except:
+      raise
